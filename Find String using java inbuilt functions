@@ -1,0 +1,17 @@
+public class Solution {
+	public static int findString(String text, String pattern) {
+		// Write your code here
+
+        int tL = text.length();
+        int pL = pattern.length();
+        
+       if(text.contains(pattern)){
+           for(int i=tL-1;i>=0;i--){
+               if(text.substring(i).contains(pattern)){
+                   return i;
+               }
+           }
+       }
+        return -1;
+	}
+}
