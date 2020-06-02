@@ -1,0 +1,44 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+public class Main
+{
+	public static void main(String[] args) {
+	   
+	}
+	
+  public static String LengthOfLongestPalindromicSubstring(String MyString){
+    
+    int MaxLen = 0;  
+
+    int start = 0;
+    int end;
+    for(int i=0;i<MyString.length();i++){
+    int Len1 = ExpandAroundCenter(MyString, i, i);    
+    int Len2 = ExpandAroundCenter(MyString, i, i+1);
+    
+    //WE CAN Return the length if the demand of the question is to find the length of longest pelindromic subsequence
+    MaxLen = Math.max(Len1, Len2);
+    if(MaxLen>end-start){
+        start = i-(MaxLen+1)/2;
+        end = i+MaxLen/2;
+    }
+    
+    }
+    return MyString.substring(start, end+1);
+  }
+  
+  public static int ExpandAroundCenter(String str, int left, int right){
+      
+      while(left>0 && right<str.length() && str.charAt(left) == str.charAt(right)){
+          left--;
+          right++;
+      }
+      return right-left+1;
+  }
+}
