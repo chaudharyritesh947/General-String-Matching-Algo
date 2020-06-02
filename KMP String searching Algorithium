@@ -1,0 +1,70 @@
+/******************************************************************************
+
+                            Online Java Compiler.
+                Code, Compile, Run and Debug java program online.
+Write your code in this editor and press "Run" button to execute it.
+
+*******************************************************************************/
+
+public class Main
+{
+	public static void main(String[] args) {
+	   
+	}
+	
+	public static int[] Lps(String pattern){
+	    if(pattern.length()==0){return null;}
+	    int j=0;
+	    int i=j+1;
+	    
+	    int LPS[] = new int[pattern.length()];
+	    while(i<pattern.length()){
+	        if(pattern.charAt(i) == pattern.charAt(j)){
+	            LPS[i] = j+1;
+	            i++;
+	            j++;
+	            
+	        }
+	        else{
+	            if(j!=0){
+	             j   = LPS[j-1];
+	            }
+	            else{
+	                LPS[i] =0;
+	                i++;
+	            }
+	        }
+	    }
+	}
+	
+	
+	public static boolean KMP(String text, String pattern){
+	    
+	    int mainText = text.length();
+	    int patLength = pattern.length();
+	    
+	    int i=0;
+	    int j=0;
+	    
+	    int []LPS = Lps(pattern);
+	    
+	    while(i<mainText && j<patLength){
+	        if(text.charAt(i) == pattern.charAt(j)){
+	            i++;
+	            j++;
+	        }
+	        else{
+	            if(j!=0){
+	                j=LIS[j-1];
+	            }
+	            else{
+	                i++;
+	            }
+	        }
+	    }
+	    if(j==patLength){
+	        return true;
+	    }
+	    return false;
+	}
+}
